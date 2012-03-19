@@ -1,0 +1,8 @@
+﻿@model JsonProjection.ViewModel.AdminIndexViewModel
+<h2>Feeds</h2>
+<ul>
+    @foreach (var item in Model.Items)
+    { 
+        <li>@Html.ActionLink(item.Name, "Preview", "Service", new { Id = item.Id }, null)</li>
+    }
+</ul>
