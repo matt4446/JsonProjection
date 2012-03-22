@@ -161,7 +161,6 @@ namespace JsonProjection.Feeds
 
                 jsonWriter.WriteStartObject();
 
-                jsonWriter.WriteComment("What new hell is this?");
                 jsonWriter.WritePropertyName("title");
                 jsonWriter.WriteValue(inspector.Title);
                 jsonWriter.WritePropertyName("description");
@@ -216,22 +215,6 @@ namespace JsonProjection.Feeds
                         jsonWriter.WritePropertyName(field.Description);
                         jsonWriter.WriteValue(field.Content);
                     }
-
-                    //foreach (var item in properties.Items) 
-                    //{
-                    //    json
-
-                    //    //var groups = layoutComponents.GroupBy(
-                    //    //    x =>
-                    //    //    {
-                    //    //        var propertyShape = ((IEnumerable<dynamic>)x.Properties.Items).First(p => ((PropertyRecord)p.Property).Id == groupPropertyId);
-                    //    //        string key = Convert.ToString(display(propertyShape));
-                    //    //        return key;
-                    //    //    }).Select(x => new { Key = x.Key, Components = x });
-
-                    //    //jsonWriter.WritePropertyName(item);
-                    //    //jsonWriter.WriteNull();
-                    //}
 
                     jsonWriter.WriteEndObject();
                 }
