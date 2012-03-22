@@ -45,7 +45,12 @@ namespace JsonProjection.Controllers
         public ActionResult Index() 
         {
             var viewModel = new ViewModel.AdminIndexViewModel();
-            viewModel.Items = this.Services.ContentManager.Query<Orchard.Projections.Models.QueryPart>().List().ToList();
+            var queries = this.Services.ContentManager.Query<Orchard.Projections.Models.QueryPart>()
+                .List()
+                .ToList();
+
+            viewModel.Items = queries.Where(e => e.Layouts.Any(layout => layout.Category.IndexOf("JSON", StringComparison.InvariantCultureIgnoreCase) >= 0))
+                .ToList();
 
             return View(viewModel);
         }

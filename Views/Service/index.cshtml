@@ -1,8 +1,27 @@
 ﻿@model JsonProjection.ViewModel.AdminIndexViewModel
-<h2>Feeds</h2>
-<ul>
-    @foreach (var item in Model.Items)
-    { 
-        <li>@Html.ActionLink(item.Name, "Preview", "Service", new { Id = item.Id }, null)</li>
-    }
-</ul>
+
+
+<table class="items">
+    <thead>
+        <tr>
+            <th colspan="3">
+                Json Feeds
+            </th>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <th>Preview</th>
+            <th>Feed Source</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Items)
+        { 
+            <tr>
+                <td>@item.Name</td>
+                <td>@Html.ActionLink("Preview", "Preview", "Service", new { Id = item.Id }, new { Class = "button" })</td>
+                <td>@Html.ActionLink("Source", "Feed", "Service", new { Id = item.Id }, new { Class = "button" }) </td>
+            </tr>
+        }
+    </tbody>
+</table>
